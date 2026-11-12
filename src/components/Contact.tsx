@@ -33,7 +33,6 @@ export default function Contact() {
     const form = e.currentTarget
     const data = new FormData(form)
 
-    // Honeypot — silently accept and drop spam submissions.
     if (String(data.get('website') ?? '').trim() !== '') {
       setStatus({ kind: 'ready', message: 'Thank you. Your enquiry has been received.', wa: null, composed: '' })
       form.reset()
@@ -111,7 +110,7 @@ export default function Contact() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      /* clipboard unavailable — user can select the text manually */
+      /* clipboard unavailable */
     }
   }
 
@@ -125,7 +124,6 @@ export default function Contact() {
         <div className="contact__grid">
           <Reveal className="contact__form-wrap">
             <form className="form" onSubmit={onSubmit} noValidate>
-              {/* honeypot */}
               <div className="form__hp" aria-hidden="true">
                 <label htmlFor="field-website">Website</label>
                 <input id="field-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
