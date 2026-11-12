@@ -10,7 +10,10 @@ type Status =
   | { kind: 'ready'; message: string; wa: string | null; composed: string }
 
 const inputId = (name: string) => `field-${name}`
-const isPlaceholder = (v: string) => v.trim().startsWith('[')
+const isPlaceholder = (v: string | string[]) => {
+  const str = Array.isArray(v) ? v.join(',') : v
+  return str.trim().startsWith('[')
+}
 
 export default function Contact() {
   const [services, setServices] = useState<string[]>([])
@@ -275,7 +278,7 @@ export default function Contact() {
                   </dd>
                 </div>
               ) : null}
-              {!isPlaceholder(String(site.company.email)) ? (
+              {!isPlaceholder(site.company.email) ? (
                 <div className="contact__row">
                   <dt>
                     <Mail size={15} strokeWidth={1.8} aria-hidden="true" /> Email
