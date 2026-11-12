@@ -67,10 +67,18 @@ export default function Footer() {
                 {WHATSAPP_CONFIGURED ? site.company.phoneDisplay : '[WHATSAPP NUMBER]'}
               </a>
             </li>
-            <li>
-              <a href={`mailto:${site.company.email}`}>
-                <Mail size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.email}
-              </a>
+<li>
+              {Array.isArray(site.company.email) ? (
+                site.company.email.map((em) => (
+                  <a key={em} href={`mailto:${em}`} style={{ display: 'block' }}>
+                    <Mail size={14} strokeWidth={1.8} aria-hidden="true" /> {em}
+                  </a>
+                ))
+              ) : (
+                <a href={`mailto:${site.company.email}`}>
+                  <Mail size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.email}
+                </a>
+              )}
             </li>
           </ul>
           <p className="site-footer__area mono">{site.company.serviceArea}</p>
