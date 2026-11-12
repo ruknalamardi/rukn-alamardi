@@ -275,25 +275,7 @@ export default function Contact() {
                   </dd>
                 </div>
               ) : null}
-{!isPlaceholder(String(site.company.email)) ? (
-                <div className="contact__row">
-                  <dt>
-                    <Mail size={15} strokeWidth={1.8} aria-hidden="true" /> Email
-                  </dt>
-                  <dd>
-                    {Array.isArray(site.company.email) ? (
-                      site.company.email.map((em) => (
-                        <a key={em} href={`mailto:${em}`} style={{ display: 'block', marginBottom: '2px' }}>
-                          {em}
-                        </a>
-                      ))
-                    ) : (
-                      <a href={`mailto:${site.company.email}`}>{site.company.email}</a>
-                    )}
-                  </dd>
-                </div>
-              ) : null}
-             {!isPlaceholder(String(site.company.email)) ? (
+              {!isPlaceholder(String(site.company.email)) ? (
                 <div className="contact__row">
                   <dt>
                     <Mail size={15} strokeWidth={1.8} aria-hidden="true" /> Email
