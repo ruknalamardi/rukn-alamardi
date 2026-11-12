@@ -67,7 +67,7 @@ export default function Footer() {
                 {WHATSAPP_CONFIGURED ? site.company.phoneDisplay : '[WHATSAPP NUMBER]'}
               </a>
             </li>
-            <li>
+           <li>
               {Array.isArray(site.company.email) ? (
                 site.company.email.map((em) => (
                   <a key={em} href={`mailto:${em}`} style={{ display: 'block', marginBottom: '4px' }}>
