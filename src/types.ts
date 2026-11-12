@@ -11,7 +11,7 @@ export interface CompanyInfo {
   phoneDisplay: string
   /** tel: href value, digits only with country code, e.g. "+9714XXXXXXX". Empty = not configured. */
   phoneHref: string
-  email: string
+  email: string | string[]
   address: string
   serviceArea: string
   workingHours: string
