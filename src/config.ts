@@ -20,7 +20,7 @@ export const site: SiteConfig = {
     address: 'Office No L13, Burjuman Centre, Bur Dubai, Dubai, UAE',
     serviceArea: 'Dubai,Sharjah,Abudhabi UAE',
     workingHours: '[CONFIRMED WORKING HOURS]',
-  },
+ },
   // ... rest of your config
 }
 
