@@ -8,7 +8,7 @@ import type { SiteConfig } from './types'
    ===================================================================== */
 
 export const site: SiteConfig = {
-  company: {
+company: {
     name: 'AL AMARDI',
     fullName: 'Rukn Al Amardi Technical Service',
     descriptor: 'MEP Contracting & Facilities Maintenance',
