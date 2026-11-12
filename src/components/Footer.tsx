@@ -68,7 +68,7 @@ export default function Footer() {
               </a>
             </li>
            <li>
-              {Array.isArray(site.company.email) ? (
+{Array.isArray(site.company.email) ? (
   site.company.email.map((em) => (
     <a key={em} href={`mailto:${em}`} style={{ display: 'block', marginBottom: '2px' }}>
       {em}
@@ -77,6 +77,9 @@ export default function Footer() {
 ) : (
   <a href={`mailto:${site.company.email}`}>{site.company.email}</a>
 )}
+                  <Mail size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.email}
+                </a>
+              )}
                   <Mail size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.email}
                 </a>
               )}
