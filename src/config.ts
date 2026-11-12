@@ -16,6 +16,7 @@ export const site: SiteConfig = {
     phoneDisplay: '+971 50 705 3498',
     phoneHref: '+971507053498',
     email: 'sales@ruknalamardi.com',
+     'info@ruknalamardi.com',
     address: 'Office No L13, Burjuman Centre, Bur Dubai, Dubai, UAE',
     serviceArea: 'Dubai,Sharjah,Abudhabi UAE',
     workingHours: '[CONFIRMED WORKING HOURS]',
