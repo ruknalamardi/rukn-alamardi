@@ -236,3 +236,79 @@ export default function Contact() {
 
               <button type="submit" className="btn btn--primary form__submit">
                 Send Enquiry via WhatsApp
+                <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
+              </button>
+              <p className="form__hint">
+                {WHATSAPP_CONFIGURED
+                  ? 'Submitting opens WhatsApp with your enquiry pre-filled — nothing is sent until you press send.'
+                  : 'This form prepares your enquiry for WhatsApp. Our WhatsApp number will be published here once confirmed.'}
+              </p>
+            </form>
+          </Reveal>
+
+          <Reveal className="contact__info">
+            <dl className="contact__list">
+              {site.company.contactPerson ? (
+                <div className="contact__row">
+                  <dt>
+                    <User size={15} strokeWidth={1.8} aria-hidden="true" /> Contact
+                  </dt>
+                  <dd>{site.company.contactPerson}</dd>
+                </div>
+              ) : null}
+              {PHONE_CONFIGURED ? (
+                <div className="contact__row">
+                  <dt>
+                    <Phone size={15} strokeWidth={1.8} aria-hidden="true" /> Phone
+                  </dt>
+                  <dd>
+                    <a href={`tel:${site.company.phoneHref}`}>{site.company.phoneDisplay}</a>
+                  </dd>
+                </div>
+              ) : null}
+              {WHATSAPP_CONFIGURED ? (
+                <div className="contact__row">
+                  <dt>
+                    <MessageCircle size={15} strokeWidth={1.8} aria-hidden="true" /> WhatsApp
+                  </dt>
+                  <dd>
+                    <a href={waLink() ?? '#contact'} target="_blank" rel="noopener noreferrer">
+                      {site.company.phoneDisplay}
+                    </a>
+                  </dd>
+                </div>
+              ) : null}
+              {!isPlaceholder(site.company.email) ? (
+                <div className="contact__row">
+                  <dt>
+                    <Mail size={15} strokeWidth={1.8} aria-hidden="true" /> Email
+                  </dt>
+                  <dd>
+                    {Array.isArray(site.company.email) ? (
+                      site.company.email.map((em) => (
+                        <a key={em} href={`mailto:${em}`} style={{ display: 'block', marginBottom: '2px' }}>
+                          {em}
+                        </a>
+                      ))
+                    ) : (
+                      <a href={`mailto:${site.company.email}`}>{site.company.email}</a>
+                    )}
+                  </dd>
+                </div>
+              ) : null}
+              {!isPlaceholder(site.company.workingHours) ? (
+                <div className="contact__row">
+                  <dt>
+                    <Clock size={15} strokeWidth={1.8} aria-hidden="true" /> Hours
+                  </dt>
+                  <dd>{site.company.workingHours}</dd>
+                </div>
+              ) : null}
+            </dl>
+            <p className="contact__area mono">Service area — {site.company.serviceArea}</p>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
