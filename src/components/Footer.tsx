@@ -9,17 +9,44 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="site-footer__inner">
-        <div className="site-footer__col site-footer__col--brand">
-          <img className="site-footer__logo" src="/media/logo.png" alt={site.company.fullName} />
-          <p className="site-footer__name">
-            <span className="site-footer__rukn">Rukn</span> Al Amardi Technical Service
-          </p>
-          <p className="site-footer__tag mono">Integrated MEP, Technical &amp; Property Maintenance Services.</p>
-          <p className="site-footer__desc">
-            Mechanical, electrical, plumbing, HVAC, ELV, civil and finishing works for
-            residential, commercial and industrial properties across {site.company.serviceArea}.
-          </p>
+      <div className="site-footer__col">
+          <h2 className="site-footer__head mono">Contact</h2>
+          <ul>
+            <li>
+              {PHONE_CONFIGURED ? (
+                <a href={`tel:${site.company.phoneHref}`}>
+                  <Phone size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.phoneDisplay}
+                </a>
+              ) : (
+                <span>
+                  <Phone size={14} strokeWidth={1.8} aria-hidden="true" /> {site.company.phoneDisplay}
+                </span>
+              )}
+            </li>
+            <li>
+              <a href={wa} {...waProps}>
+                <MessageCircle size={14} strokeWidth={1.8} aria-hidden="true" />{' '}
+                {WHATSAPP_CONFIGURED ? site.company.phoneDisplay : '[WHATSAPP NUMBER]'}
+              </a>
+            </li>
+            <li>
+              <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '8px' }}>
+                <Mail size={14} strokeWidth={1.8} aria-hidden="true" style={{ marginTop: '3px', flexShrink: 0 }} />
+                <span>
+                  {Array.isArray(site.company.email) ? (
+                    site.company.email.map((em) => (
+                      <a key={em} href={`mailto:${em}`} style={{ display: 'block', marginBottom: '2px' }}>
+                        {em}
+                      </a>
+                    ))
+                  ) : (
+                    <a href={`mailto:${site.company.email}`}>{site.company.email}</a>
+                  )}
+                </span>
+              </span>
+            </li>
+          </ul>
+          <p className="site-footer__area mono">{site.company.serviceArea}</p>
         </div>
 
         <nav className="site-footer__col" aria-label="Footer">
